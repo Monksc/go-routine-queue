@@ -26,7 +26,7 @@ func (self *FunctionNode) run(completion func()) {
 
 func (self *FunctionNode) size() int {
 	if self.next != nil {
-		return 1 + self.next
+		return 1 + self.next.size()
 	}
 	return 0
 }
