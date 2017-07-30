@@ -3,10 +3,11 @@ package FunctionQueue
 type FunctionQueue struct {
 	head *FunctionNode
 	isRunning bool
+	completion func()
 }
 
 func NewFunctionQueue() FunctionQueue {
-	return FunctionQueue{nil, false}
+	return FunctionQueue{nil, false, nil}
 }
 
 func (self *FunctionQueue) Add(function func ()) {
@@ -25,6 +26,12 @@ func (self *FunctionQueue) run() {
 		self.head = self.head.next
 		if self.head != nil {
 			self.run()
+		} else if self.completion != nil {
+			self.completion()
 		}
 	})
+}
+
+func (self *FunctionQueue) SetCompletion(completion func()) {
+	self.completion = completion()
 }
