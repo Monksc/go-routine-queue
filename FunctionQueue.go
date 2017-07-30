@@ -33,5 +33,5 @@ func (self *FunctionQueue) run() {
 }
 
 func (self *FunctionQueue) SetCompletion(completion func()) {
-	self.completion = completion()
+	self.completion = completion
 }
