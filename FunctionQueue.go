@@ -35,3 +35,11 @@ func (self *FunctionQueue) run() {
 func (self *FunctionQueue) SetCompletion(completion func()) {
 	self.completion = completion
 }
+
+func (self *FunctionQueue) Size() int {
+	if self.head != nil {
+		return self.head.size()
+	}
+
+	return 0
+}

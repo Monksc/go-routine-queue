@@ -23,3 +23,10 @@ func (self *FunctionNode) run(completion func()) {
 		completion()
 	}()
 }
+
+func (self *FunctionNode) size() int {
+	if self.next != nil {
+		return 1 + self.next
+	}
+	return 0
+}
