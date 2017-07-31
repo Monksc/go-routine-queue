@@ -43,3 +43,23 @@ func (self *FunctionQueue) Size() int {
 
 	return 0
 }
+
+func (self *FunctionQueue) Remove(index int) FunctionNode {
+
+	if index == 0 {
+		panic("Cannot remove Queue at index 0")
+	}
+
+	traverse := self.head
+	for i:=1; i < index; i++ {
+		traverse = traverse.next
+	}
+
+	traverse.next = traverse.next.next
+}
+
+func (self *FunctionQueue) RemoveAllButCurrent() {
+	if self.head != nil {
+		self.head.next = nil
+	}
+}
