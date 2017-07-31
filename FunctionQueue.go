@@ -58,7 +58,7 @@ func (self *FunctionQueue) Remove(index int) FunctionNode {
 	node := traverse.next
 	traverse.next = traverse.next.next
 
-	return &node
+	return *node
 }
 
 func (self *FunctionQueue) RemoveAllButCurrent() {
